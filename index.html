@@ -59,16 +59,6 @@
     h1{margin:8px 0 14px;font-size:clamp(28px,5vw,52px);line-height:1.05}
     p.lead{font-size:clamp(16px,2.6vw,22px);margin:.25rem 0 1rem}
 
-    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr}}
-
-    .hero{
-      position:relative;border-radius:calc(var(--radius) - 6px);overflow:hidden;
-      box-shadow:0 12px 34px rgba(0,0,0,.18);
-      aspect-ratio:16/9;background:#eef3;
-    }
-    .hero img{width:100%;height:100%;object-fit:cover;display:block}
-
     .info{display:grid;gap:14px}
     .pill{display:flex;align-items:center;gap:.6rem;background:#ffffff;
       border:1px dashed rgba(0,0,0,.12);padding:12px 14px;border-radius:14px}
@@ -95,27 +85,19 @@
       <h1>🌞 Alerta de calor e diversão! 🌴</h1>
       <p class="lead">O Chá de Despedida da Gabi tá chegandooo! 🎉</p>
 
-      <div class="grid">
-        <div class="info">
-          <div class="pill">📆 <strong>Dia:</strong>&nbsp;13/09</div>
-          <div class="pill">🕔 <strong>Hora:</strong>&nbsp;17h <em style="opacity:.75">(chegue no horário ou 20 min antes)</em></div>
-          <div class="pill">📍 <strong>Local:</strong>&nbsp;Área de lazer – Rua João Adamson, Nº 175, Vila Azenha, Nova Odessa</div>
-          <ul class="details">
-            <li>🍕 Pizza saindo do forno às <strong>18h</strong>!</li>
-            <li>💍 Teremos brincadeiras superdivertidas com a noiva do ano!</li>
-            <li>🩴 Vibe verão! Vale chinelo, riso solto e energia lá no alto ☀️</li>
-            <li>💖 Contamos com você para deixar esse momento ainda mais especial. Até lá!</li>
-          </ul>
-          <div class="cta">
-            <a class="btn primary" href="https://maps.app.goo.gl/TJo4xoPgwLyiLxUz6" target="_blank" rel="noopener noreferrer">📍 Abrir no Google Maps</a>
-            <a class="btn ghost" href="#foto">📸 Ver faixada do local</a>
-          </div>
+      <div class="info">
+        <div class="pill">📆 <strong>Dia:</strong>&nbsp;13/09</div>
+        <div class="pill">🕔 <strong>Hora:</strong>&nbsp;17h <em style="opacity:.75">(chegue no horário ou 20 min antes)</em></div>
+        <div class="pill">📍 <strong>Local:</strong>&nbsp;Área de lazer – Rua João Adamson, Nº 175, Vila Azenha, Nova Odessa</div>
+        <ul class="details">
+          <li>🍕 Pizza saindo do forno às <strong>18h</strong>!</li>
+          <li>💍 Teremos brincadeiras superdivertidas com a noiva do ano!</li>
+          <li>🩴 Vibe verão! Vale chinelo, riso solto e energia lá no alto ☀️</li>
+          <li>💖 Contamos com você para deixar esse momento ainda mais especial. Até lá!</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="https://maps.app.goo.gl/TJo4xoPgwLyiLxUz6" target="_blank" rel="noopener noreferrer">📍 Abrir no Google Maps</a>
         </div>
-        <figure class="hero" id="foto">
-          <!-- Coloque a imagem da faixada na mesma pasta e mantenha o nome abaixo -->
-          <!-- Você pode trocar o src para o nome real do arquivo no seu repositório -->
-          <img src="faixada-local.jpg" alt="Faixada do local do evento" />
-        </figure>
       </div>
       <footer>Feito com carinho para a Gabi ✨</footer>
     </section>
