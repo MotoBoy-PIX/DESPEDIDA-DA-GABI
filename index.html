@@ -8,129 +8,112 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg1:#FFDEE9; /* rosa claro */
-      --bg2:#B5FFFC; /* azul piscina */
-      --bg3:#FFFCCF; /* amarelinho sol */
-      --card:#ffffffdd; /* glass card */
-      --ink:#1f2937; /* texto */
-      --accent:#ff5fa2; /* rosa vibrante */
-      --accent2:#00c2ff; /* azul vibrante */
-      --accent3:#ffc83d; /* amarelo */
-      --radius:24px;
+    :root {
+      --bg1:#FFDEE9; 
+      --bg2:#B5FFFC; 
+      --bg3:#FFFCCF; 
+      --card:#ffffffdd; 
+      --ink:#1f2937; 
+      --accent:#ff5fa2; 
+      --accent2:#00c2ff; 
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
+    body {
       margin:0;
-      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      font-family:'Poppins', sans-serif;
       color:var(--ink);
-      background: radial-gradient(1200px 800px at 10% -10%, var(--bg3), transparent),
-                  radial-gradient(1200px 800px at 110% 10%, var(--bg2), transparent),
-                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      background: radial-gradient(circle at top left, var(--bg1), var(--bg2), var(--bg3));
       overflow-x:hidden;
     }
-
-    /* Confete caindo */
-    .confetti{position:fixed;top:-10vh;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
-    .confetti span{
+    .confetti {
+      position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+    }
+    .confetti span {
       position:absolute;top:-10vh;display:block;width:10px;height:16px;border-radius:2px;
-      opacity:.95;filter:saturate(1.2);
-      animation:fall linear infinite;
+      opacity:.9;animation:fall linear infinite;
     }
-    @keyframes fall{
-      0%{transform:translate3d(var(--x,0px), -10vh, 0) rotate(0deg)}
-      100%{transform:translate3d(var(--x,0px), 110vh, 0) rotate(720deg)}
+    @keyframes fall {
+      0% {transform:translateY(-10vh) rotate(0deg);}
+      100% {transform:translateY(110vh) rotate(720deg);}
     }
-
-    .wrap{position:relative;z-index:1;min-height:100dvh;display:grid;place-items:center;padding:40px 20px}
-
-    .card{
-      width:min(900px, 96vw);background:var(--card);backdrop-filter:blur(8px);
-      border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.15);
-      padding:28px;overflow:hidden;border:1px solid rgba(255,255,255,.65);
+    .wrap {
+      position:relative;z-index:1;min-height:100vh;
+      display:flex;align-items:center;justify-content:center;padding:20px;
     }
-
-    .badge{display:inline-flex;gap:.5rem;align-items:center;font-weight:700;letter-spacing:.04em;
+    .card {
+      max-width:800px;background:var(--card);padding:30px;border-radius:20px;
+      box-shadow:0 20px 50px rgba(0,0,0,.15);text-align:center;
+    }
+    h1 {
+      font-size:clamp(28px,5vw,48px);margin-bottom:10px;color:var(--accent);
+    }
+    p.lead {
+      font-size:clamp(16px,2.5vw,22px);margin-bottom:20px;font-weight:500;
+    }
+    ul {
+      list-style:none;padding:0;display:grid;gap:10px;margin:20px 0;
+    }
+    ul li {
+      background:#fff;padding:12px;border-radius:12px;
+      border:1px solid rgba(0,0,0,.08);
+    }
+    a.btn {
+      display:inline-block;padding:14px 20px;border-radius:999px;
+      text-decoration:none;font-weight:700;color:#fff;
       background:linear-gradient(90deg,var(--accent),var(--accent2));
-      color:white;border-radius:999px;padding:10px 16px;margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
-
-    h1{margin:8px 0 14px;font-size:clamp(28px,5vw,52px);line-height:1.05}
-    p.lead{font-size:clamp(16px,2.6vw,22px);margin:.25rem 0 1rem}
-
-    .info{display:grid;gap:14px}
-    .pill{display:flex;align-items:center;gap:.6rem;background:#ffffff;
-      border:1px dashed rgba(0,0,0,.12);padding:12px 14px;border-radius:14px}
-
-    .cta{margin-top:4px;display:flex;flex-wrap:wrap;gap:12px}
-    .btn{appearance:none;border:0;border-radius:999px;padding:14px 18px;font-weight:700;cursor:pointer;
-      text-decoration:none;display:inline-flex;align-items:center;gap:.6rem}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.18)}
-    .btn.ghost{background:#fff;color:var(--ink);border:1px solid rgba(0,0,0,.1)}
-
-    .details{margin-top:12px;display:grid;gap:10px}
-    .details li{list-style:none;background:#fff;padding:12px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.06)}
-
-    footer{margin-top:18px;text-align:center;font-size:14px;opacity:.8}
+      box-shadow:0 8px 20px rgba(0,0,0,.2);
+    }
+    footer {
+      margin-top:20px;font-size:14px;opacity:.7;
+    }
   </style>
 </head>
 <body>
-  <!-- Confetes: gerados via JS -->
-  <div class="confetti" aria-hidden="true" id="confetti"></div>
+  <!-- Confetes -->
+  <div class="confetti" id="confetti"></div>
 
   <main class="wrap">
     <section class="card">
-      <span class="badge">💖 Chá de Despedida da Gabi</span>
       <h1>🌞 Alerta de calor e diversão! 🌴</h1>
       <p class="lead">O Chá de Despedida da Gabi tá chegandooo! 🎉</p>
 
-      <div class="info">
-        <div class="pill">📆 <strong>Dia:</strong>&nbsp;13/09</div>
-        <div class="pill">🕔 <strong>Hora:</strong>&nbsp;17h <em style="opacity:.75">(chegue no horário ou 20 min antes)</em></div>
-        <div class="pill">📍 <strong>Local:</strong>&nbsp;Área de lazer – Rua João Adamson, Nº 175, Vila Azenha, Nova Odessa</div>
-        <ul class="details">
-          <li>🍕 Pizza saindo do forno às <strong>18h</strong>!</li>
-          <li>💍 Teremos brincadeiras superdivertidas com a noiva do ano!</li>
-          <li>🩴 Vibe verão! Vale chinelo, riso solto e energia lá no alto ☀️</li>
-          <li>💖 Contamos com você para deixar esse momento ainda mais especial. Até lá!</li>
-        </ul>
-        <div class="cta">
-          <a class="btn primary" href="https://maps.app.goo.gl/TJo4xoPgwLyiLxUz6" target="_blank" rel="noopener noreferrer">📍 Abrir no Google Maps</a>
-        </div>
-      </div>
+      <ul>
+        <li>📆 <strong>Dia:</strong> 13/09</li>
+        <li>🕔 <strong>Hora:</strong> 17h <em>(chegue no horário ou 20 min antes)</em></li>
+        <li>📍 <strong>Local:</strong> Área de lazer – Rua João Adamson, Nº 175, Vila Azenha, Nova Odessa</li>
+        <li>🍕 Pizza saindo do forno às <strong>18h</strong>!</li>
+        <li>💍 Brincadeiras superdivertidas com a noiva do ano</li>
+        <li>🩴 Vibe verão! Vale chinelo, riso solto e energia lá no alto ☀️</li>
+        <li>💖 Contamos com você para deixar esse momento ainda mais especial!</li>
+      </ul>
+
+      <a href="https://maps.app.goo.gl/TJo4xoPgwLyiLxUz6" target="_blank" class="btn">📍 Abrir no Google Maps</a>
+
       <footer>Feito com carinho para a Gabi ✨</footer>
     </section>
   </main>
 
   <script>
-    // Gera confetes coloridos caindo pela página
+    // Gera confetes
     (function(){
       const root = document.getElementById('confetti');
       const colors = ['#ff5fa2','#ffc83d','#00c2ff','#7dffb3','#ff7aa2','#7ea6ff'];
-      const COUNT = 140; // quantidade de confetes
+      const COUNT = 100;
       const vw = () => Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       for(let i=0;i<COUNT;i++){
         const s = document.createElement('span');
-        const size = 6 + Math.random()*10; // 6–16px
+        const size = 6 + Math.random()*10;
         const left = Math.random()*vw();
-        const delay = Math.random()*-8; // inicia em tempos diferentes
-        const dur = 6 + Math.random()*6; // 6–12s
+        const delay = Math.random()*-8;
+        const dur = 6 + Math.random()*6;
         s.style.width = size+'px';
         s.style.height = size*1.4+'px';
         s.style.left = left+'px';
         s.style.background = colors[Math.floor(Math.random()*colors.length)];
         s.style.animationDuration = dur+'s';
         s.style.animationDelay = delay+'s';
-        s.style.setProperty('--x', (Math.random()*80-40)+'px');
         root.appendChild(s);
       }
-      window.addEventListener('resize', ()=>{
-        // Reposiciona no resize para manter a distribuição
-        [...root.children].forEach(el=>{
-          el.style.left = Math.random()*vw()+'px';
-        });
-      });
     })();
   </script>
 </body>
